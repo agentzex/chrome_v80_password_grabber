@@ -24,5 +24,5 @@ Below is the structure of new encrypted password,
 	BYTE signature[3] = "v10";\
 	BYTE iv[12];\
 	BYTE encPassword[...] \
-}**\
+}**
 

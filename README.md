@@ -13,16 +13,16 @@ Finally this key is encoded using Base64 and stored in “Local State” file in
 
 Below is the sample entry of encrypted master key.
 
-**"os_crypt":{"encrypted_key":"RFBBUEkBAAAA0Iyd3wEA0RGbegD...opsxEv3TKNqz0gyhAcq+nAq0"},**
+***"os_crypt":{"encrypted_key":"RFBBUEkBAAAA0Iyd3wEA0RGbegD...opsxEv3TKNqz0gyhAcq+nAq0"},***
 
 Now to store the web login password, Chrome encrypts it using AES-256-GCM algorithm with the above master key and 12-byte random IV data. Finally, it inserts signature “v10” to the encrypted password and stores it in above “Login Data” file.
 
 Below is the structure of new encrypted password,
 
-**struct WebPassword\
+***struct WebPassword\
 {\
 	BYTE signature[3] = "v10";\
 	BYTE iv[12];\
 	BYTE encPassword[...] \
-}**
+}***
 

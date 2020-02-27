@@ -19,10 +19,10 @@ Now to store the web login password, Chrome encrypts it using AES-256-GCM algori
 
 Below is the structure of new encrypted password,
 
-**struct WebPassword
-{
-	BYTE signature[3] = "v10";
-	BYTE iv[12];
-	BYTE encPassword[...] 
-}**
+**struct WebPassword\
+{\
+	BYTE signature[3] = "v10";\
+	BYTE iv[12];\
+	BYTE encPassword[...] \
+}**\
 

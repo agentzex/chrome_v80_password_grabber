@@ -4,7 +4,7 @@ import base64
 import sqlite3
 import win32crypt
 from Crypto.Cipher import AES
-
+import shutil
 
 
 def get_master_key():
@@ -41,11 +41,11 @@ def decrypt_password(buff, master_key):
 
 
 if __name__ == '__main__':
-    print("Make sure Chrome is closed before running this script otherwise it won't work!\n\n")
 
     master_key = get_master_key()
     login_db = os.environ['USERPROFILE'] + os.sep + r'AppData\Local\Google\Chrome\User Data\default\Login Data'
-    conn = sqlite3.connect(login_db)
+    shutil.copy2(login_db, "db.db") #making a temp copy since Login Data DB is locked while Chrome is running
+    conn = sqlite3.connect("db.db")
     cursor = conn.cursor()
 
     try:
@@ -61,4 +61,7 @@ if __name__ == '__main__':
 
     cursor.close()
     conn.close()
-
+    try:
+        os.remove("db.db")
+    except Exception as e:
+        pass

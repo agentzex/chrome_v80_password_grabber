@@ -44,8 +44,8 @@ if __name__ == '__main__':
 
     master_key = get_master_key()
     login_db = os.environ['USERPROFILE'] + os.sep + r'AppData\Local\Google\Chrome\User Data\default\Login Data'
-    shutil.copy2(login_db, "db.db") #making a temp copy since Login Data DB is locked while Chrome is running
-    conn = sqlite3.connect("db.db")
+    shutil.copy2(login_db, "Loginvault.db") #making a temp copy since Login Data DB is locked while Chrome is running
+    conn = sqlite3.connect("Loginvault.db")
     cursor = conn.cursor()
 
     try:
@@ -62,6 +62,6 @@ if __name__ == '__main__':
     cursor.close()
     conn.close()
     try:
-        os.remove("db.db")
+        os.remove("Loginvault.db")
     except Exception as e:
         pass

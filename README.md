@@ -1,7 +1,7 @@
 # chrome_v80_password_grabber
 Grab passwords from Chrome > v80 using their new AES encryption with Master Key.\
 This script was tested against chrome v80 on a Windows machine.\
-Passwords saved on Chrome before v80, seem to remain with the old encryption mechanism - using Windows DPAPI (“CryptProtectData”) and are not re-encrypted\
+Passwords which were already saved on Chrome before v80, seem to remain with the old encryption mechanism - using Windows DPAPI (“CryptProtectData”) and are not re-encrypted\
 Only newly saved passwords, after the update was done, will be saved with the new encryption mechanism.
 
 The new machanism is as follows (from https://xenarmor.com/how-to-recover-saved-passwords-google-chrome/ ):\

